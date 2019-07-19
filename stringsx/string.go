@@ -9,7 +9,7 @@ func Hello(name string) (string, error) {
 func HelloByLang(name, lang string) (string, error) {
 	switch lang {
 	case "en":
-		return fmt.Sprintf("Hi, %s!", name), nil
+		return fmt.Sprintf("Hi, %s, are you ok?!", name), nil
 	case "zh":
 		return fmt.Sprintf("你好, %s!", name), nil
 	case "fr":

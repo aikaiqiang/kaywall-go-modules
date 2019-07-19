@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b382bafa-fa7d-41fe-9e79-4aff1e48c033" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stringsx/string.go" beforeDir="false" afterPath="$PROJECT_DIR$/stringsx/string.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/stringsx/string.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
+            <state relative-caret-position="189">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
             </state>
           </provider>
         </entry>
@@ -51,8 +51,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="341" />
-    <option name="y" value="-13" />
+    <option name="x" value="219" />
+    <option name="y" value="26" />
     <option name="width" value="1663" />
     <option name="height" value="998" />
   </component>
@@ -104,7 +104,7 @@
     </option>
   </component>
   <component name="ToolWindowManager">
-    <frame x="92" y="-11" width="1663" height="998" extended-state="0" />
+    <frame x="74" y="51" width="1663" height="998" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
@@ -145,8 +145,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/stringsx/string.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
+        <state relative-caret-position="189">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>

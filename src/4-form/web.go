@@ -25,7 +25,7 @@ func sayHelloName(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("key:", k)
 		fmt.Println("val:", strings.Join(v, ""))
 	}
-	fmt.Fprintf(w, "Hello，this is first go web program!") //这个写入到w的是输出到客户端的
+	fmt.Fprintf(w, "Hello，this is first go 3-web program!") //这个写入到w的是输出到客户端的
 }
 
 func login(w http.ResponseWriter, r *http.Request) {
@@ -66,7 +66,7 @@ func login(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		// 2- 中文
+		// 2-base- 中文
 		if m, _ := regexp.MatchString("^\\p{Han}+$", r.Form.Get("realname")); !m {
 			return
 		}
@@ -77,7 +77,7 @@ func login(w http.ResponseWriter, r *http.Request) {
 		}
 
 		// 4- 电子邮件地址
-		if m, _ := regexp.MatchString(`^([\w\.\_]{2,10})@(\w{1,})\.([a-z]{2,4})$`, r.Form.Get("email")); !m {
+		if m, _ := regexp.MatchString(`^([\w\.\_]{2-base,10})@(\w{1,})\.([a-z]{2-base,4})$`, r.Form.Get("email")); !m {
 			fmt.Println("no")
 		} else {
 			fmt.Println("yes")

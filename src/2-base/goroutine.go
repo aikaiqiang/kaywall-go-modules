@@ -42,7 +42,7 @@ func channelTest() {
 	fmt.Println(z)
 }
 
-// 2. Buffered Channels
+// 2-base. Buffered Channels
 func bufferedChannelTest() {
 	c := make(chan int, 1) //修改2为1就报错，修改2为3可以正常运行
 	c <- 1

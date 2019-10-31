@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	db, err := sql.Open("postgres", "user=postgres password=123456 dbname=postgres sslmode=disable")
+	db, err := sql.Open("postgres", "user=postgres password=123456 dbname=test sslmode=disable")
 	checkErr(err)
 
 	//插入数据

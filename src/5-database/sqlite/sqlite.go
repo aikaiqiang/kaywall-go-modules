@@ -4,34 +4,39 @@ import (
 	"database/sql"
 	"fmt"
 
-	_ "github.com/go-sql-driver/mysql"
+	_ "github.com/mattn/go-sqlite3"
 )
 
 const (
-	DBHostsIp  = "192.168.0.24:3307"
-	DBUserName = "root"
-	DBPassWord = "Cobbler1234!"
-	DBName     = "test_db"
+	// sqlite3 foo.db # 创建数据库
+	// .database # 查看数据库路径
+	SQLDBName = "C:/Users/Administrator/foo.db"
 )
 
-func main() {
-	db, err := sql.Open("mysql", DBUserName+":"+DBPassWord+"@tcp("+DBHostsIp+")/"+DBName+"?charset=utf8")
-	checkErr(err)
-	//insert(db)
-	//update(db, 1)
-	remove(db, 1)
-	query(db)
-	//关闭数据库连接
-	db.Close()
+var db *sql.DB
+var err error
 
+func init() {
+	fmt.Println("init SQLite DataSource ...")
+	db, err = sql.Open("sqlite3", SQLDBName)
+	checkErr(err)
 }
 
-func insert(db *sql.DB) {
+func main() {
+	//insert()
+	//update(1)
+	remove(1)
+	query()
+	//关闭数据库连接
+	db.Close()
+}
+
+func insert() {
 	// 准备插入操作
-	stmt, err := db.Prepare("INSERT INTO userinfo SET username=?,department=?,created=?")
+	stmt, err := db.Prepare("INSERT INTO userinfo(username, department, created) values(?,?,?)")
 	checkErr(err)
 	// 执行插入操作
-	res, err := stmt.Exec("astaxie", "研发部门", "2012-12-09")
+	res, err := stmt.Exec("kaywall_1", "研发部门", "2019-10-31")
 	checkErr(err)
 	// 返回最近的自增主键id
 	id, err := res.LastInsertId()
@@ -39,12 +44,12 @@ func insert(db *sql.DB) {
 	fmt.Println("LastInsertId: ", id)
 }
 
-func update(db *sql.DB, id int) {
+func update(id int) {
 	//更新数据
 	stmt, err := db.Prepare("update userinfo set username=? where uid=?")
 	checkErr(err)
 
-	res, err := stmt.Exec("astaxieupdate", id)
+	res, err := stmt.Exec("kaywall_new", id)
 	checkErr(err)
 
 	affect, err := res.RowsAffected()
@@ -52,7 +57,7 @@ func update(db *sql.DB, id int) {
 	fmt.Println(affect)
 }
 
-func query(db *sql.DB) {
+func query() {
 	//查询数据
 	rows, err := db.Query("SELECT * FROM userinfo")
 	checkErr(err)
@@ -67,7 +72,7 @@ func query(db *sql.DB) {
 	}
 }
 
-func remove(db *sql.DB, id int) {
+func remove(id int) {
 	//删除数据
 	stmt, err := db.Prepare("delete from userinfo where uid=?")
 	checkErr(err)

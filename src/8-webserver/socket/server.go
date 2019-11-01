@@ -2,12 +2,16 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net"
 	"os"
 	"strconv"
 	"strings"
 	"time"
 )
+
+//创建字典集合存储客户端连接
+var conns = make(map[string]net.Conn)
 
 func main() {
 	//server_1()
@@ -64,15 +68,48 @@ func server_3() {
 	checkError(err)
 	listener, err := net.ListenTCP("tcp", tcpAddr)
 	checkError(err)
+	log.Println("等待客户端连接")
 	for {
 		conn, err := listener.Accept()
 		if err != nil {
 			continue
 		}
-		fmt.Println("port 1201 request coming ...")
-		go handleClientNew(conn)
+		connIp := conn.RemoteAddr().String()
+		// 保存连接
+		conns[connIp] = conn
+		log.Println(connIp, "已经建立连接")
+		welcome := "welcome " + conn.RemoteAddr().String() + "\n"
+		// server response
+		conn.Write([]byte(welcome))
+		go handleConn(conn)
 	}
 
+}
+
+func handleConn(conn net.Conn) {
+	buffer := make([]byte, 1024)
+	for {
+		n, err := conn.Read(buffer)
+
+		if err != nil {
+			log.Println(conn.RemoteAddr().String(), "出现错误：", err)
+			delete(conns, conn.RemoteAddr().String())
+			broadMsg([]byte(conn.RemoteAddr().String() + "已下线"))
+			return
+		}
+
+		msg := conn.RemoteAddr().String() + ":" + string(buffer[:n])
+		broadMsg([]byte(msg))
+		log.Println("用户【", conn.RemoteAddr().String(), "】发送一条消息", string(buffer[:n]))
+
+	}
+}
+
+func broadMsg(msg []byte) { //消息广播
+	for _, connopj := range conns {
+		//log.Println("用户【", connopj.RemoteAddr().String(),"】发送一条消息",string(msg))
+		connopj.Write(msg)
+	}
 }
 
 func handleClientNew(conn net.Conn) {

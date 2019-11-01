@@ -30,6 +30,9 @@ func main() {
 
 	reader := bufio.NewReader(os.Stdin)
 	fmt.Print("Enter text: \n")
+	// 单独开一个线程监听消息
+	go printMsg(conn, result)
+
 	for {
 		text, _ := reader.ReadString('\n')
 		if strings.Contains(text, "exit") {
@@ -37,7 +40,12 @@ func main() {
 		}
 		_, err = conn.Write([]byte(text))
 		checkError(err)
-		_, err = conn.Read(result)
+	}
+}
+
+func printMsg(conn *net.TCPConn, result []byte) {
+	for {
+		_, err := conn.Read(result)
 		checkError(err)
 		fmt.Println("Server:", string(result))
 	}

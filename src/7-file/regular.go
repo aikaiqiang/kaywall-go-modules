@@ -20,12 +20,12 @@ func IsIP(ip string) (b bool) {
 func getConment() {
 	resp, err := http.Get("http://www.baidu.com")
 	if err != nil {
-		fmt.Println("http get error.")
+		fmt.Println("http get 11-error.")
 	}
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		fmt.Println("http read error")
+		fmt.Println("http read 11-error")
 		return
 	}
 

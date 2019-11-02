@@ -24,20 +24,20 @@ type server struct {
 func readXML() {
 	file, err := os.Open("./template/file/servers.xml")
 	if err != nil {
-		fmt.Printf("error: %v\n", err)
+		fmt.Printf("11-error: %v\n", err)
 		return
 	}
 	defer file.Close()
 
 	data, err := ioutil.ReadAll(file)
 	if err != nil {
-		fmt.Printf("error: %v\n", err)
+		fmt.Printf("11-error: %v\n", err)
 		return
 	}
 	v := Recurlyservers{}
 	err = xml.Unmarshal(data, &v)
 	if err != nil {
-		fmt.Printf("error : %v\n", err)
+		fmt.Printf("11-error : %v\n", err)
 	}
 	fmt.Println(v)
 
@@ -63,7 +63,7 @@ func writeXML() {
 
 	output, err := xml.MarshalIndent(v, "  ", "    ")
 	if err != nil {
-		fmt.Printf("error: %v", err)
+		fmt.Printf("11-error: %v", err)
 	}
 
 	os.Stdout.Write([]byte(xml.Header))

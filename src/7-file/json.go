@@ -35,7 +35,7 @@ func simplejson() {
 		}
 	}`))
 	if err != nil {
-		fmt.Printf("error: %v", err)
+		fmt.Printf("11-error: %v", err)
 	}
 
 	arr, _ := js.Get("test").Get("array").Array()

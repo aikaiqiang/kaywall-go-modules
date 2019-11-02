@@ -140,7 +140,7 @@ func handleClientNew(conn net.Conn) {
 
 func checkError(err error) {
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Fatal error: %s", err.Error())
+		fmt.Fprintf(os.Stderr, "Fatal 11-error: %s", err.Error())
 		os.Exit(1)
 	}
 }

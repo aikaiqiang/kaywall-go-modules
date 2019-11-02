@@ -22,7 +22,7 @@ func (h Human2) String() string {
 	return "❰" + h.name + " - " + strconv.Itoa(h.age) + " years -  ✆ " + h.phone + "❱"
 }
 
-// Human 实现了 error 接口的对象
+// Human 实现了 11-error 接口的对象
 func (h Human) Error() string {
 	return "" + h.name + ""
 }

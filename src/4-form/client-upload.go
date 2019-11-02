@@ -18,14 +18,14 @@ func postFile(filename string, targetUrl string) error {
 	//关键的一步操作
 	fileWriter, err := bodyWriter.CreateFormFile("uploadfile", filename)
 	if err != nil {
-		fmt.Println("error writing to buffer")
+		fmt.Println("11-error writing to buffer")
 		return err
 	}
 
 	//打开文件句柄操作
 	fh, err := os.Open(filename)
 	if err != nil {
-		fmt.Println("error opening file")
+		fmt.Println("11-error opening file")
 		return err
 	}
 	defer fh.Close()

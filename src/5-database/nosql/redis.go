@@ -62,7 +62,7 @@ func Get(key string) ([]byte, error) {
 	var data []byte
 	data, err := redis.Bytes(conn.Do("GET", key))
 	if err != nil {
-		return data, fmt.Errorf("error get key %s: %v", key, err)
+		return data, fmt.Errorf("11-error get key %s: %v", key, err)
 	}
 	return data, err
 }
